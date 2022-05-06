@@ -1,0 +1,74 @@
+{
+  "references": [
+    {
+      "path": "./packages/fe"
+    }
+  ],
+  "compilerOptions": {
+    // Classification follows https://www.typescriptlang.org/tsconfig
+
+    // Type Checking
+    "strict": true,
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    // noPropertyAccessFromIndexSignature: false,
+    // noUncheckedIndexedAccess: false,
+    // noUnusedLocals: false,
+    // noUnusedParameters: false,
+
+    // Modules
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    // Exclude everything by default. Include them in each project on-demand
+    "types": [
+      "web"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    // Emit
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "stripInternal": true,
+    // skip type emit for @internal types
+
+    // JavaScript Support
+    "allowJs": true,
+    "checkJs": false,
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    // Language and Environment
+    "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "ES2019"
+    ],
+    // don't add "DOM", we use @types/web
+    "target": "ES2019",
+    "useDefineForClassFields": true,
+    // Projects
+    "composite": true,
+    "incremental": true,
+    // Completeness
+    "skipLibCheck": true
+    // skip all type checks for .d.ts files
+  },
+  "files": [],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    },
+    "swc": true,
+    "transpileOnly": true
+  }
+}

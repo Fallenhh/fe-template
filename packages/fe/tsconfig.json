@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "outDir": "./dist/src",
+    "tsBuildInfoFile": "./dist/legacy.tsbuildinfo",
+    "sourceMap": true,
+    "noEmit": false,
+    "types": [
+      "web"
+    ]
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "./dist"
+  ],
+  "references": []
+}
