@@ -17,5 +17,9 @@
   "exclude": [
     "./dist"
   ],
-  "references": []
+  "references": [
+    {
+      "path": "../database"
+    }
+  ]
 }

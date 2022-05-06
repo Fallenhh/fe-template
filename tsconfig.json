@@ -2,9 +2,17 @@
   "references": [
     {
       "path": "./packages/fe"
+    },
+    {
+      "path": "./packages/database"
     }
   ],
   "compilerOptions": {
+    "paths": {
+      "@nlpdev/database": [
+        "./packages/database/src"
+      ]
+    },
     // Classification follows https://www.typescriptlang.org/tsconfig
 
     // Type Checking

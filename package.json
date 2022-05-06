@@ -2,12 +2,15 @@
   "name": "fe-template",
   "packageManager": "yarn@3.2.0",
   "workspaces": [
-    "packages/fe"
+    "packages/fe",
+    "packages/database"
   ],
   "engines": {
     "node": "^16"
   },
   "scripts": {
+    "tsc": "tsc -b",
+    "tsc:watch": "tsc -b --watch",
     "run": "echo nothing for now",
     "build": "echo nothing for now",
     "lint": "eslint -c .eslintrc.js packages --ext .ts,.tsx,.js --cache --fix"

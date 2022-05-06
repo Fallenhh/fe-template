@@ -439,6 +439,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nlpdev/database@workspace:^, @nlpdev/database@workspace:packages/database":
+  version: 0.0.0-use.local
+  resolution: "@nlpdev/database@workspace:packages/database"
+  dependencies:
+    idb: ^7.0.1
+  languageName: unknown
+  linkType: soft
+
 "@nlpdev/fe@workspace:packages/fe":
   version: 0.0.0-use.local
   resolution: "@nlpdev/fe@workspace:packages/fe"
@@ -446,6 +454,7 @@ __metadata:
     "@emotion/react": ^11.9.0
     "@emotion/styled": ^11.8.1
     "@mui/material": ^5.6.4
+    "@nlpdev/database": "workspace:^"
     parcel: ^2.5.0
     react: ^18.1.0
     react-dom: ^18.1.0
@@ -3090,6 +3099,13 @@ __metadata:
   dependencies:
     safer-buffer: ">= 2.1.2 < 3.0.0"
   checksum: 3f60d47a5c8fc3313317edfd29a00a692cc87a19cac0159e2ce711d0ebc9019064108323b5e493625e25594f11c6236647d8e256fbe7a58f4a3b33b89e6d30bf
+  languageName: node
+  linkType: hard
+
+"idb@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "idb@npm:7.0.1"
+  checksum: 61526789562cc3518a1a030c7a06cc98edfcd62795700ff28c701d6f84c178aee4e98bedfc79e6c394ba26084aa4667d6594b1728e5868f305f9b34148662679
   languageName: node
   linkType: hard
 
