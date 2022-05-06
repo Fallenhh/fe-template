@@ -8,6 +8,7 @@
     "sourceMap": true,
     "noEmit": false,
     "types": [
+      "jest",
       "web"
     ]
   },

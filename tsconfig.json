@@ -76,7 +76,6 @@
     "compilerOptions": {
       "module": "CommonJS"
     },
-    "swc": true,
     "transpileOnly": true
   }
 }

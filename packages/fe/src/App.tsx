@@ -5,7 +5,7 @@ import create from 'zustand'
 
 const useStore = create(() => ({}))
 
-export function App () {
+export const App: React.FC = function App () {
   // ???
   useStore()
   return (<>

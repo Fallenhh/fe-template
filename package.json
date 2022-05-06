@@ -13,9 +13,15 @@
     "tsc:watch": "tsc -b --watch",
     "run": "echo nothing for now",
     "build": "echo nothing for now",
-    "lint": "eslint -c .eslintrc.js packages --ext .ts,.tsx,.js --cache --fix"
+    "lint": "eslint -c .eslintrc.js packages --ext .ts,.tsx,.js --cache --fix",
+    "test": "jest"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.13.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/user-event": "^14.1.1",
+    "@types/jest": "^27.5.0",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
     "@types/web": "^0.0.64",
@@ -31,6 +37,10 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "jest": "^28.0.3",
+    "jest-environment-jsdom": "^28.0.2",
+    "ts-jest": "^28.0.1",
+    "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   }
 }
