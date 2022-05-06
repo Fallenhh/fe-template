@@ -14,9 +14,17 @@
     "run": "echo nothing for now",
     "build": "echo nothing for now",
     "lint": "eslint -c .eslintrc.js packages --ext .ts,.tsx,.js --cache --fix",
-    "test": "jest"
+    "test": "jest",
+    "preinstall": "npx only-allow yarn",
+    "postinstall": "husky install"
+  },
+  "lint-staged": {
+    "*.{!ts,tsx,js,jsx}": "prettier --write --ignore-unknown",
+    "*.{ts,tsx,js,jsx}": "eslint -c .eslintrc.js --cache --fix"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -37,8 +45,10 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^7.0.4",
     "jest": "^28.0.3",
     "jest-environment-jsdom": "^28.0.2",
+    "prettier": "^2.6.2",
     "ts-jest": "^28.0.1",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
