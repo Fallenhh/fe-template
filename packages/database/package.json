@@ -1,8 +1,7 @@
 {
   "name": "@nlpdev/database",
   "private": true,
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
   "dependencies": {
     "idb": "^7.0.1"
   }
