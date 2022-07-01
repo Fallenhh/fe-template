@@ -1,49 +1,74 @@
 import { Button, Container, List, ListItem, ListItemText, TextField, Typography } from '@mui/material'
+import { ItemDB, TodoItem } from '@nlpdev/database'
 import React, { useState } from 'react'
 import create from 'zustand'
 
-interface Todo {
-  id: string
-  name: string
-  description: string
-}
-
 interface TodoState {
-  todos: Todo[]
+  todos: TodoItem[]
   addTodo: (name: string, description: string) => void
+  addTodoId: (todo: TodoItem) => void
   removeTodo: (id: string) => void
 }
+
+ItemDB.create()
 
 const useStore = create<TodoState>((set) => ({
   // initial state
   todos: [],
   // methods for manipulating state
   addTodo: (name: string, description: string) => {
+    const todo = {
+      id: Date.now().toString(),
+      name,
+      description
+    } as TodoItem
+
     set((state) => ({
-      todos: [
-        ...state.todos,
-        {
-          id: Date.now().toString(),
-          name,
-          description
-        } as Todo
-      ]
+      todos: [...state.todos, todo]
     }))
+
+    ItemDB.update(todo)
   },
+
+  addTodoId: (todo: TodoItem) => {
+    set((state) =>
+      state.todos.indexOf(todo)
+        ? state
+        : {
+            todos: [...state.todos, todo]
+          }
+    )
+  },
+
   removeTodo: (id) => {
     set((state) => ({
       todos: state.todos.filter((todo) => todo.id !== id)
     }))
+    ItemDB.delete(id)
   }
 }))
 
 export const App: React.FC = function App () {
   const [todoName, setTodoName] = useState('')
   const [todoText, setTodoText] = useState('')
-  const { addTodo, removeTodo, todos } = useStore()
+  const { addTodo, addTodoId, removeTodo, todos } = useStore()
+
   return (
     <Container maxWidth='xs'>
       <Typography variant='h2'>To-Do</Typography>
+      <Button
+        fullWidth
+        variant='outlined'
+        color='primary'
+        onClick={() => {
+          ItemDB.query().then((result) => {
+            result.forEach((item) => {
+              addTodoId(item)
+            })
+          })
+        }}>
+        Connect
+      </Button>
       <TextField
         label='Todo Name'
         required
@@ -65,7 +90,7 @@ export const App: React.FC = function App () {
         variant='outlined'
         color='primary'
         onClick={() => {
-          if (todoText.length) {
+          if (todoName.length) {
             addTodo(todoName, todoText)
             setTodoName('')
             setTodoText('')

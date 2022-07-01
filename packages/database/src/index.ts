@@ -24,10 +24,24 @@ const dbAccess = createDBAccess<TodoDBSchema>(
     }
   }))
 
-// ???
 export const ItemDB = {
-  create: (...args: any[]) => {},
-  query: (...args: any[]) => {},
-  update: (...args: any[]) => {},
-  delete: (...args: any[]) => {}
+
+  create: (): any => {
+    // db.then((value) => { console.log(value) })
+  },
+  query: () => {
+    return dbAccess().then((d) => {
+      return d.getAll('item')
+    })
+  },
+  update: (todo: TodoItem) => {
+    return dbAccess().then((d) => {
+      d.put('item', todo)
+    })
+  },
+  delete: (id: string) => {
+    return dbAccess().then((d) => {
+      d.delete('item', id)
+    })
+  }
 }
