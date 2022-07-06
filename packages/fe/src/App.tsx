@@ -1,6 +1,7 @@
 import { Button, Container, List, ListItem, ListItemText, TextField, Typography } from '@mui/material'
 import { ItemDB, TodoItem } from '@nlpdev/database'
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import create from 'zustand'
 
 interface TodoState {
@@ -54,67 +55,73 @@ export const App: React.FC = function App () {
   const { addTodo, addTodoId, removeTodo, todos } = useStore()
 
   return (
-    <Container maxWidth='xs'>
+    <Router>
       <Typography variant='h2'>To-Do</Typography>
-      <Button
-        fullWidth
-        variant='outlined'
-        color='primary'
-        onClick={() => {
-          ItemDB.query().then((result) => {
-            result.forEach((item) => {
-              addTodoId(item)
-            })
-          })
-        }}>
-        Connect
-      </Button>
-      <TextField
-        label='Todo Name'
-        required
-        variant='outlined'
-        fullWidth
-        onChange={(e) => setTodoName(e.target.value)}
-        value={todoName}
-      />
-      <TextField
-        label='Todo Description'
-        required
-        variant='outlined'
-        fullWidth
-        onChange={(e) => setTodoText(e.target.value)}
-        value={todoText}
-      />
-      <Button
-        fullWidth
-        variant='outlined'
-        color='primary'
-        onClick={() => {
-          if (todoName.length) {
-            addTodo(todoName, todoText)
-            setTodoName('')
-            setTodoText('')
-          }
-        }}>
-        Add Item
-      </Button>
-      <List>
-        {todos.map((todo) => (
-          <ListItem key={todo.id}>
+      <Routes>
+        <Route path='/'>
+          <Container maxWidth='xs'>
             <Button
+              fullWidth
               variant='outlined'
-              color='secondary'
+              color='primary'
               onClick={() => {
-                removeTodo(todo.id)
+                ItemDB.query().then((result) => {
+                  result.forEach((item) => {
+                    addTodoId(item)
+                  })
+                })
               }}>
-              Delete
+              Connect
             </Button>
-            <ListItemText key={todo.id} primary={todo.name} secondary={todo.description}>
-              {todo.name}
-            </ListItemText>
-          </ListItem>
-        ))}
-      </List>
-    </Container>
+            <TextField
+              label='Todo Name'
+              required
+              variant='outlined'
+              fullWidth
+              onChange={(e) => setTodoName(e.target.value)}
+              value={todoName}
+            />
+            <TextField
+              label='Todo Description'
+              required
+              variant='outlined'
+              fullWidth
+              onChange={(e) => setTodoText(e.target.value)}
+              value={todoText}
+            />
+            <Button
+              fullWidth
+              variant='outlined'
+              color='primary'
+              onClick={() => {
+                if (todoName.length) {
+                  addTodo(todoName, todoText)
+                  setTodoName('')
+                  setTodoText('')
+                }
+              }}>
+              Add Item
+            </Button>
+            <List>
+              {todos.map((todo) => (
+                <ListItem key={todo.id}>
+                  <Button
+                    variant='outlined'
+                    color='secondary'
+                    onClick={() => {
+                      removeTodo(todo.id)
+                    }}>
+                    Delete
+                  </Button>
+                  <ListItemText key={todo.id} primary={todo.name} secondary={todo.description}>
+                    {todo.name}
+                  </ListItemText>
+                </ListItem>
+              ))}
+            </List>
+          </Container>
+        </Route>
+      </Routes>
+    </Router>
   )
 }
